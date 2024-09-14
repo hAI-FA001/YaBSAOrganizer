@@ -5,6 +5,8 @@ from pyxenoverse.gui.ctrl.split_hex_ctrl import SplitHexCtrl
 from yabsa.panels.types import add_entry, Page
 from yabsa.panels.types import MAX_UINT16
 
+from yabsa.my_helpers import convert_to_px
+
 
 class EntryPanel(wx.Panel):
     def __init__(self, parent):
@@ -48,7 +50,7 @@ class EntryPanel(wx.Panel):
     @add_entry
     def add_num_entry(self, panel, _, *args, **kwargs):
         if 'size' not in kwargs:
-            kwargs['size'] = (150, -1)
+            kwargs['size'] = (convert_to_px(150), -1)
         kwargs['min'], kwargs['max'] = 0, 65535
         return wx.SpinCtrl(panel, *args, **kwargs)
 
