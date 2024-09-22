@@ -613,10 +613,13 @@ class MainPanel(wx.Panel):
                 if delete_bsa:
                     self.bsa.entries.remove(data)
                 else:
-                    self.bsa.entries[data.index].sub_entries.clear()
+                    list_idx = self.bsa.entries.index(data)
+                    self.bsa.entries[list_idx].sub_entries.clear()
                     child = self.entry_list.GetFirstChild(item)[0]
                     while child.IsOk():
                         sibling, child = child, self.entry_list.GetNextSibling(child)
+                        self.entry_list.Delete(sibling)
+                    continue
             elif data.get_name() == 'SubEntry':
                 parent = self.entry_list.GetItemData(self.entry_list.GetItemParent(item))
                 parent.sub_entries.remove(data)
