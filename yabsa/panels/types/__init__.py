@@ -142,7 +142,7 @@ class BasePanel(wx.Panel):
         if 'max' not in kwargs:
             kwargs['max'] = 3.402823466e38
         
-        kwargs['inc'] = 0.01
+        kwargs['inc'] = 0.0001
 
         return wx.SpinCtrlDouble(panel, *args, **kwargs)
 

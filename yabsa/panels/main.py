@@ -596,30 +596,30 @@ class MainPanel(wx.Panel):
         delete_bsa = True
 
         # See if bac entries are part of the selected
-        if any(isinstance(entry, Entry) for entry in data):
-            with wx.MessageDialog(self, 'Delete BSA entry(s) as well?', style=wx.YES | wx.NO | wx.CANCEL) as dlg:
-                res = dlg.ShowModal()
-                if res == wx.ID_YES:
-                    delete_bsa = True
-                elif res == wx.ID_NO:
-                    delete_bsa = False
-                else:
-                    return
+        # if any(isinstance(entry, Entry) for entry in data):
+        #     with wx.MessageDialog(self, 'Delete BSA entry(s) as well?', style=wx.YES | wx.NO | wx.CANCEL) as dlg:
+        #         res = dlg.ShowModal()
+        #         if res == wx.ID_YES:
+        #             delete_bsa = True
+        #         elif res == wx.ID_NO:
+        #             delete_bsa = False
+        #         else:
+        #             return
 
         # Loop over and delete
         for item in reversed(selected):
             data = self.entry_list.GetItemData(item)
             if data.get_name() == 'Entry':
-                if delete_bsa:
+                # if delete_bsa:
                     self.bsa.entries.remove(data)
-                else:
-                    list_idx = self.bsa.entries.index(data)
-                    self.bsa.entries[list_idx].sub_entries.clear()
-                    child = self.entry_list.GetFirstChild(item)[0]
-                    while child.IsOk():
-                        sibling, child = child, self.entry_list.GetNextSibling(child)
-                        self.entry_list.Delete(sibling)
-                    continue
+                # else:
+                #     list_idx = self.bsa.entries.index(data)
+                #     self.bsa.entries[list_idx].sub_entries.clear()
+                #     child = self.entry_list.GetFirstChild(item)[0]
+                #     while child.IsOk():
+                #         sibling, child = child, self.entry_list.GetNextSibling(child)
+                #         self.entry_list.Delete(sibling)
+                #     continue
             elif data.get_name() == 'SubEntry':
                 parent = self.entry_list.GetItemData(self.entry_list.GetItemParent(item))
                 parent.sub_entries.remove(data)
