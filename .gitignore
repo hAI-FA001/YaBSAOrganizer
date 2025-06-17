@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 pyxenoverse/
+pyxenoverse
 *.png

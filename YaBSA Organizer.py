@@ -19,7 +19,7 @@ import yabsa.darkmode as darkmode
 from yabsa.my_helpers import convert_to_px
 
 
-VERSION = '2.0.1'
+VERSION = '2.0.2'
 
 
 class MainWindow(wx.Frame):
